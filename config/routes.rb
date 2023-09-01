@@ -20,14 +20,14 @@ Rails.application.routes.draw do
     get 'homes/about' => 'homes#about', as: 'about'
     resources :items, only: [:index, :show]
     resources :customers, only: [:edit, :update]
-    get 'customers/mypage' => 'customers#mypage'
-    get 'customers/unsubscribe' => 'customers#unsubscribe'
-    patch 'customers/withdraw' => 'customers#withdraw'
+    get 'customers/mypage' => 'customers#mypage', as: 'mypage'
+    get 'customers/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe'
+    patch 'customers/withdraw' => 'customers#withdraw', as: 'withdraw'
     resources :cart_items, only: [:index, :update, :create, :destroy]
-    delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
-    resources :orders, only: [:new, :index, :create, :show]
-    post 'orders/confirm' => 'orders#confirm'
-    get 'orders/complete' => 'orders#complete'
+    delete 'cart_items/destroy_all' => 'cart_items#destroy_all', as: 'destroy_all'
+    resources :orders, only: [:new, :index, :create, :show, :confirm, :complete]
+    post 'orders/confirm' => 'orders#confirm', as: 'confirm'
+    get 'orders/complete' => 'orders#complete', as: 'complete'
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
