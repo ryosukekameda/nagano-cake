@@ -6,21 +6,34 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <script src="https://kit.fontawesome.com/83484975db.js" crossorigin="anonymous"></script>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   
   <header>
-    <% if user_signed_in? %>
+    <% if customer_signed_in? %>
       <li>
-        <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+        <%= link_to "ホーム", root_path %>
+      </li>
+      <li>
+        <%= link_to "マイページ", mypage_path %>
+      </li>
+      <li>
+        <%= link_to "カート", cart_items_path %>
+      </li>
+      <li>
+        <%= link_to "注文商品", mypage_path %>
+      </li>
+      <li>
+        <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
       </li>
     <% else %>
       <li>
-        <%= link_to "新規登録", new_user_registration_path %>
+        <%= link_to "新規登録", new_customer_registration_path %>
       </li>
       <li>
-        <%= link_to "ログイン", new_user_session_path %>
+        <%= link_to "ログイン", new_customer_session_path %>
       </li>
     <% end %>
   </header>
