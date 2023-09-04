@@ -20,8 +20,8 @@ Rails.application.routes.draw do
     get '/about' => 'homes#about', as: 'about'
     resources :items, only: [:index, :show]
     get 'customers/mypage' => 'customers#show'
-    get 'customers/edit' => 'customers#edit'
-    patch 'customers' => 'customers#update'
+    get 'customers/information/edit' => 'customers#edit'
+    patch 'customers/information' => 'customers#update'
     get 'customers/unsubscribe' => 'customers#unsubscribe'
     patch 'customers/withdraw' => 'customers#withdraw'
     resources :cart_items, only: [:index, :update, :create, :destroy]
