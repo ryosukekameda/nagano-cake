@@ -62,5 +62,12 @@
     <main>
       <%= yield %>
     </main>
+    <footer>
+      <%= link_to "管理者ログイン", new_admin_session_path %>
+      <%= link_to "管理者トップ", admin_admin_path %>
+      <%= link_to "商品一覧", admin_items_path %>
+      <%= link_to "顧客一覧", admin_customers_path %>
+      <%= link_to "管理者ログアウト", destroy_admin_session_path, method: :delete %>
+    </footer>
   </body>
 </html>
