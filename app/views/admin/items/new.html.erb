@@ -1,1 +1,50 @@
-<h1>商品新規登録画面</h1>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h4 class="my-5">商品新規登録</h4>
+      
+      <table class="table table-borderless">
+      <%= form_with model: Item.new do |f| %>
+      
+        <tr>
+          <td>商品画像</td>
+          <td><%= f.text_field :image %></td>
+          <td></td>
+        </tr>
+        
+         <tr>
+          <td>商品名</td>
+          <td><%= f.text_field :name %></td>
+          <td></td>
+        </tr>
+        
+        <tr>
+          <td>商品説明</td>
+          <td><%= f.text_area :introduction %></td>
+          <td></td>
+        </tr>
+        
+        <tr>
+          <td>税抜価格</td>
+          <td><%= f.text_field :price %>円</td>
+          <td></td>
+        </tr>
+        
+         <tr>
+          <td>販売ステータス</td>
+          <td><%= f.text_field :price %></td>
+          <td></td>
+        </tr>
+        
+        <tr>
+          <td></td>
+          <td><%= f.submit "新規登録", class:"btn btn-success" %></td>
+          <td></td>
+        </tr>
+        
+      <% end %>
+      </table>
+      
+    </div>
+  </div>
+</div>
