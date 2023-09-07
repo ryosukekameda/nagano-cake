@@ -8,7 +8,7 @@
       
         <tr>
           <td>商品画像</td>
-          <td><%= f.text_field :image %></td>
+          <td><%= f.file_field :image, accept: "image/*" %></td>
           <td></td>
         </tr>
         
@@ -32,7 +32,7 @@
         
          <tr>
           <td>販売ステータス</td>
-          <td><%= f.text_field :price %></td>
+          <td><%= f.radio_button :price %></td>
           <td></td>
         </tr>
         
