@@ -7,38 +7,38 @@
       <%= form_with model: Item.new do |f| %>
       
         <tr>
-          <td>商品画像</td>
+          <th>商品画像</th>
           <td><%= f.file_field :image, accept: "image/*" %></td>
           <td></td>
         </tr>
         
          <tr>
-          <td>商品名</td>
-          <td><%= f.text_field :name %></td>
+          <th>商品名</th>
+          <td><%= f.text_field :name, class:"form-contrrol" %></td>
           <td></td>
         </tr>
         
         <tr>
-          <td>商品説明</td>
-          <td><%= f.text_area :introduction %></td>
+          <th>商品説明</th>
+          <td><%= f.text_area :introduction, class:"form-contrrol" %></td>
           <td></td>
         </tr>
         
         <tr>
-          <td>税抜価格</td>
-          <td><%= f.text_field :price %>円</td>
+          <th>税抜価格</th>
+          <td><%= f.text_field :add_tax_sales_price, class:"form-contrrol" %>円</td>
           <td></td>
         </tr>
         
          <tr>
-          <td>販売ステータス</td>
+          <th>販売ステータス</th>
           <td><%= f.radio_button :price %></td>
           <td></td>
         </tr>
         
         <tr>
           <td></td>
-          <td><%= f.submit "新規登録", class:"btn btn-success" %></td>
+          <td><%= f.submit "新規登録", class:"btn btn-success text-right" %></td>
           <td></td>
         </tr>
         

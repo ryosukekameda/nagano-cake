@@ -1,1 +1,42 @@
-<h1>商品編集画面</h1>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h4 class="my-5">商品編集</h4>
+      
+      <table class="table table-borderless">
+      <%= form_with model @item do |f| %>
+      
+      <tr>
+        <th>商品画像</th>
+        <td><%= f.file_field :image, class:"form-control" %></td>
+        <td></td>
+      </tr>
+      
+      <tr>
+        <th>商品名</th>
+        <td><%= f.text_field :name, class:"form-control" %></td>
+        <td></td>
+      </tr>
+      
+      <tr>
+        <th>商品説明</th>
+        <td><%= f.text_area :introduction, class:"form-control" %></td>
+        <td></td>
+      </tr>
+      
+      <tr>
+        <th>税抜価格</th>
+        <td><%= f.text_area :add_tax_sales_price, class:"form-control" %></td>
+        <td></td>
+      </tr>
+      
+      <tr>
+        <th>販売ステータス</th>
+        <td><%= f.text_area :add_tax_sales_price, class:"form-control" %></td>
+        <td></td>
+      </tr>
+      
+      </table>
+    </div>
+  </div>
+</div>
