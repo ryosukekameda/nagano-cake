@@ -5,6 +5,7 @@ class Item < ApplicationRecord
   
   validates :name, {presence: true}
   validates :introduction, {presence: true}
+  validates :price_without_tax, {presence: true}
   
   def add_tax_sales_price
     (self.sales_price * 1.10).round

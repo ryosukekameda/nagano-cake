@@ -23,16 +23,12 @@
             <tr>
               <td><%= item.id %></td>
               <td><%= link_to item.name, admin_items_path(item) %></td>
-              <td><%= item.add_tax_sales_price.to_s(:delimited, delimiter: ',') %></td>
-              <td><%= if item.sale_status == false %>
-                販売中
-              <% else %>
-                販売停止中
-              <% end %>
+              <td><%= item.price_without_tax.to_s(:delimited, delimiter: ',') %></td>
+              <td>
+                <%= item.sales_status == false %>
               </td>
             </tr>
           <% end %>
-          <%= paginate @items %>
           </tbody>
         </table>
     </div>
