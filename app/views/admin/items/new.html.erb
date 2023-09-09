@@ -2,10 +2,9 @@
   <div class="row">
     <div class="col">
       <h4 class="my-5">商品新規登録</h4>
-      
-      <table class="new-form-table">
-      <%= form_with model: Item.new do |f| %>
-      
+
+      <%= form_with model: @item, url: admin_items_path, local: true do |f| %>
+       <table class="new-form-table">
         <tr>
           <th>商品画像</th>
           <td><%= f.file_field :image, accept: "image/*" %></td>
@@ -26,15 +25,18 @@
         
         <tr>
           <th>税抜価格</th>
-          <td><%= f.text_field :price_without_tax, class:"form-contrrol" %>円</td>
+          <td><%= f.text_field :price, class:"form-contrrol" %>円</td>
           <td></td>
         </tr>
         
          <tr>
           <th>販売ステータス</th>
           <td>
-            <%= f.radio_button :sales_status, [["販売中","false"], ["販売停止中", "true"]] %>
-          
+            <%= f.label :sales_status_on_sale, '販売中' %>
+            <%= f.radio_button :sales_status, :on_sale %>
+            <%= f.label :sales_status_sales_stop, '販売停止中' %>
+            <%= f.radio_button :sales_status, :sales_stop %>
+          </td>
         </tr>
         
         <tr>
@@ -42,10 +44,10 @@
           <td><%= f.submit "新規登録", class:"btn btn-success text-right" %></td>
           <td></td>
         </tr>
-        
+       </table>
       <% end %>
-      </table>
-      
+     
+
     </div>
   </div>
 </div>
