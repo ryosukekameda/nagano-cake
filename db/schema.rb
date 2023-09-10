@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_09_08_150536) do
+ActiveRecord::Schema.define(version: 2023_09_10_141004) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -53,9 +53,9 @@ ActiveRecord::Schema.define(version: 2023_09_08_150536) do
   end
 
   create_table "cart_items", force: :cascade do |t|
-    t.integer "item_id", null: false
-    t.integer "customer_id", null: false
-    t.integer "amount", null: false
+    t.integer "item_id"
+    t.integer "customer_id"
+    t.integer "amount"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -66,12 +66,12 @@ ActiveRecord::Schema.define(version: 2023_09_08_150536) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.string "last_name", null: false
-    t.string "first_name", null: false
-    t.string "last_name_kana", null: false
-    t.string "first_name_kana", null: false
-    t.string "postal_code", null: false
-    t.string "address", null: false
+    t.string "last_name"
+    t.string "first_name"
+    t.string "last_name_kana"
+    t.string "first_name_kana"
+    t.string "postal_code"
+    t.string "address"
     t.string "telephone_number"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -82,35 +82,33 @@ ActiveRecord::Schema.define(version: 2023_09_08_150536) do
   end
 
   create_table "items", force: :cascade do |t|
-    t.string "name", null: false
-    t.text "introduction", null: false
-    t.integer "price", null: false
+    t.string "name"
+    t.text "introduction"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "is_sales_status", default: false, null: false
     t.string "image_id"
-    t.boolean "sales_status", default: false, null: false
     t.integer "price_without_tax"
   end
 
   create_table "order_details", force: :cascade do |t|
-    t.integer "order_id", null: false
-    t.integer "item_id", null: false
-    t.integer "price", null: false
-    t.integer "amount", null: false
+    t.integer "order_id"
+    t.integer "item_id"
+    t.integer "price"
+    t.integer "amount"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "making_status", default: 0, null: false
   end
 
   create_table "orders", force: :cascade do |t|
-    t.integer "customer_id", null: false
-    t.string "address", null: false
-    t.string "postal_code", null: false
-    t.string "name", null: false
+    t.integer "customer_id"
+    t.string "address"
+    t.string "postal_code"
+    t.string "name"
     t.integer "payment_method", null: false
-    t.integer "billing_amount", null: false
-    t.integer "postage", null: false
+    t.integer "billing_amount"
+    t.integer "postage"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "order_status", default: 0, null: false
