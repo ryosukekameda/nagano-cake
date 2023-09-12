@@ -57,16 +57,14 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'devise'
 
+gem 'font-awesome-rails'
+
 gem 'enum_help'
 
 gem 'leifcr-refile-mini_magick', '~> 0.2.3'
 
-gem 'sqlite3', '~> 1.4'
+gem 'bootstrap', '~> 4.1.1'
 
-gem 'bootstrap-sass'
 gem 'jquery-rails'
-gem 'rubocop-airbnb'
 
-gem 'kaminari'
-gem 'ransack'
-gem 'payjp'
+gem 'kaminari','~> 1.2.1'
