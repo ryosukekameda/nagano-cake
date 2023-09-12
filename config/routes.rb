@@ -7,7 +7,8 @@ Rails.application.routes.draw do
     get '/admin' => 'homes#top', as: 'admin'
     resources :items, only: [:index, :new, :create, :show, :edit, :update]
     resources :customers, only: [:index, :show, :edit, :update]
-    resources :orders, only: [:show]
+    resources :orders, only: [:show, :index, :update]
+    resources :order_details, only: [:update]
   end
   
   devise_for :customers, skip: [:passwords], controllers: {
@@ -26,7 +27,7 @@ Rails.application.routes.draw do
     patch 'customers/withdraw' => 'customers#withdraw'
     resources :cart_items, only: [:index, :update, :create, :destroy]
     delete 'cart_items/destroy_all' => 'cart_items#destroy_all', as: 'destroy_all'
-    resources :orders, only: [:new, :index, :create, :show, :confirm, :complete]
+    resources :orders, only: [:index,:show]
     post 'orders/confirm' => 'orders#confirm', as: 'confirm'
     get 'orders/complete' => 'orders#complete', as: 'complete'
   

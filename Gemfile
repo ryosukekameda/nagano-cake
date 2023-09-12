@@ -60,3 +60,13 @@ gem 'devise'
 gem 'enum_help'
 
 gem 'leifcr-refile-mini_magick', '~> 0.2.3'
+
+gem 'sqlite3', '~> 1.4'
+
+gem 'bootstrap-sass'
+gem 'jquery-rails'
+gem 'rubocop-airbnb'
+
+gem 'kaminari'
+gem 'ransack'
+gem 'payjp'

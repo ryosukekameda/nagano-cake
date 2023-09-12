@@ -4,54 +4,55 @@
       <h4 class="my-5"><%= @customer.full_name %>さんの会員情報編集</h4>
     
         
-        <table class="table table-borderless">
-          <%= form_with model: [:admin, @customer] do |f| %>
+          <%= form_for(@customer, url: admin_customer_path) do |f| %>
+          <table class="row table">
           
           <tr>
-            <td>会員ID</td>
-            <td><%= @customer.id %></td>
+            <th class="col-xs-2"><%= f.label :会員ID %></td>
+            <td class="col-xs-10"><%= f.text.field :id, class:"form-control" %></td>
           </tr>
           
           <tr>
-            <td>氏名</td>
-            <td><%= f.text_field :last_name %> <%= f.text_field :first_name %></td>
+            <th><%= f.label :氏名 %></th>
+            <td>
+              <%= f.text_field :last_name, class:"form-control" %><br>
+              <%= f.text_field :first_name, class:"form-control" %>
+             </td>
           </tr>
           
            <tr>
-            <td>フリガナ</td>
-            <td><%= f.text_field :last_name_kana %> <%= f.text_field :first_name_kana %></td>
+             <th><%= f.label :フリガナ %></th>
+             <td>
+               <%= f.text_field :last_name_kana, class:"form-control" %><br>
+               <%= f.text_field :first_name_kana, class:"form-control" %>
+             </td>
           </tr>
           
           <tr>
-            <td>郵便番号</td>
-            <td><%= f.text_field :postal_code %></td>
+            <th><%= f.label :郵便番号 %></th>
+            <td><%= f.text_field :postal_code, class:"form-control" %></td>
           </tr>
           
           <tr>
-            <td>住所</td>
-            <td><%= f.text_field :address %></td>
+            <th><%= f.label :住所 %></th>
+            <td><%= f.text_field :address, class:"form-control" %></td>
           </tr>
           
           <tr>
-            <td>電話番号</td>
-            <td><%= f.text_field :telephone_number %></td>
+            <th><%= f.label :電話番号 %></th>
+            <td><%= f.text_field :telephone_number, class:"form-control" %></td>
           </tr>
           
           <tr>
-            <td>メールアドレス</td>
-            <td><%= f.text_field :email %></td>
+             <th><%= f.label :メールアドレス %></th>
+             <td><%= f.text_field :email , class:"form-control"%></td>
           </tr>
           
           <tr>
-            <td>会員ステータス</td>
-            <td>
-              <%= f.radio_button :is_deleted, :false %>
-              <%= f.label :is_deleted, "有効", { value: :false } %>
-              
-              <%= f.radio_button :is_deleted, :true %>
-              <%= f.label :is_deleted, "退会", { value: :true } %> 
-            </td>
+             <th><%= f.label :会員ステータス %></th>
+             <td><%= f.select :is_deleted, [["有効会員","false"], ["退会済み","true"]], class:"form-control" %></td>
           </tr>
+         </table>
           
           <tr>
             <td></td>
@@ -59,7 +60,7 @@
           </tr>
           
           <% end %>
-        </table>
+      
     </div>
   </div>
 </div>

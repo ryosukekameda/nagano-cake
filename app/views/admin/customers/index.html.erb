@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col">
+    <div class="col-xs-10 col-xs-offset-1">
       <h4 class="my-5">会員一覧</h4>
       
         <table class="table">
@@ -13,14 +13,24 @@
               <th>ステータス</th>
             </tr>
           </thead>
+          
+          <tbody>
           <% @customers.each do |customer| %>
             <tr>
               <td><%= customer.id %></td>
               <td><%= link_to customer.full_name, admin_customer_path(customer) %></td>
               <td><%= customer.email %></td>
-              <td><%= customer.customer_status %></td>
+              <td>
+                <% if customer.is_deleted == false %>
+                有効
+                <% else %>
+                無効
+                <% end %>
+              </td>
             </tr>
           <% end %>
+          <%= pagenate @customers %>
+          </tbody>
           
         </table>
         

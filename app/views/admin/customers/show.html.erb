@@ -1,10 +1,12 @@
 <div class="container">
   <div class="row">
-    <div class="col">
+    <div class="col-xs-10 col-xs-offset-1">
+      
       <h4 class="my-5"><%= @customer.full_name %>さんの会員詳細</h4>
-      <div class="d-flex align_items_center">
         
-        <table class="table table-borderless">
+        <table class="row table">
+          
+          
           <tr>
             <th>会員ID</th>
             <td><%= @customer.id %></td>
@@ -42,16 +44,25 @@
           
            <tr>
             <th>会員ステータス</th>
-            <td><%= @customer.customer_status %></td>
-          </tr>
-          
-           <tr>
-             <td></td>
-             <td><%= link_to "編集する", edit_admin_customer_path, class:"btn btn-success" %>
-                 <%= link_to "注文履歴一覧を見る", "#", class:"btn btn-primary" %>
-             </td>
+            <td>
+              <% if @customer.is_deleted == false %>
+                <span class="label label-primary">
+                  有効
+                </span>
+              <% else %>
+                <span class="label label-danger">
+                  退会
+                </span>
+              <% end %>
+            </td>
           </tr>
         </table>
+          
+          <div> 
+             <%= link_to "編集する", edit_admin_customer_path, class:"btn btn-success" %>
+             <%= link_to "注文履歴一覧を見る", class:"btn btn-primary" %>
+             
+          </div>
         
       </div>
     </div>

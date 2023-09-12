@@ -15,14 +15,6 @@ class Customer < ApplicationRecord
     self.last_name_kana + " " + self.first_name_kana
   end
   
-  def customer_status
-    if is_deleted == true
-      "退会"
-    else
-      "有効"
-    end
-  end
-  
   def active_for_authentication?
     super && (self.is_deleted == false)
   end
