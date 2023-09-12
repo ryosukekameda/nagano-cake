@@ -16,7 +16,7 @@ class Customer < ApplicationRecord
   end
   
   def active_for_authentication?
-    super && (self.is_deleted == false)
+    super && (self.is_customer_status == false)
   end
   
        validates :last_name,  presence: true
