@@ -2,7 +2,8 @@ class Public::OrdersController < ApplicationController
   before_action :authenticate_customer!
   
   def new
-    @cart_items = current_customer.cart_items
+    @order = Order.new
+    @customer = current_customer
   end
   
   def index
@@ -15,7 +16,7 @@ class Public::OrdersController < ApplicationController
   end
   
   def confirm
-    
+    @cart_items = current_customer.cart_items
   end
   
   def complete
@@ -27,6 +28,7 @@ class Public::OrdersController < ApplicationController
   　   order_detail.order_id = order.id
   　   order_detai.amount = cart_item.amount
   　   order_detail.making_status = 0
+  　   order_detail.price = (cart_item.item.price_without_tax * 1.1).floor
   　   order_detail.save
   end
   
@@ -43,10 +45,10 @@ class Public::OrdersController < ApplicationController
     session[:order][:order_status] = 0
     session[:order][:customer_id] = current_customer.id
     session[:order][:billing_amount] = params[:method].to_i
-    session[:order][:post_cade] = params[:post_code]
-    session[:order][:address] = params[:address]
-    session[:order][:name] = params[:name]
-    if session[:order][:post_code].presence && session[:order][:address].presence && session[:order][:name].presence
+    session[:order][:postal_cade] = customer.postal_code
+    session[:order][:address] = customer.address
+    session[:order][:name] = customer.name
+    if session[:order][:postal_code].presence && session[:order][:address].presence && session[:order][:name].presence
        redirect_to confirm_path
     else
        redirect_to new_order_path

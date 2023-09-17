@@ -1,1 +1,32 @@
-<h1>注文情報入力画面（支払方法）</h1>
+<div class="panel panel-warning">
+  
+  <div class="panel-heading">
+    <h4><span class="label label-default">注文情報入力</span></h4>
+  </div>
+  
+  <div class="panel-body">
+    
+    <%= form_for(url: orders_path, method: :post) do |form| %>
+    
+      <h5>支払方法</h5>
+      
+        <span> </span><%= form.radio_button :method, 0, checked: "checked" %>
+        <%= form.label :クレジットカード %><br>
+        <span> </span><%= form.radio_button :method, 1 %>
+        <%= form.label :銀行振込 %>
+      
+      <h5>お届け先</h5>
+        
+        <span> </span><%= form.radio_button, checked: "checked" %>
+        <%= form.label :自身の住所 %><br>
+        <span> </span><%= @cusutomer.postal_cade %>
+        <%= @customer.address %>
+        <span> </span><%= @customer.last_name %>
+        <%= @customer.first_name %><br>
+        
+        <%= form.submit "確認画面へ進む", class:"btn btn-warning col-xs-6 col-xs-offset-1" %>
+        
+    <% end %>
+  </div>
+  
+</div>
