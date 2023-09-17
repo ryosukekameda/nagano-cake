@@ -12,64 +12,48 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   
-   <body class="d-flex flex-column vh-100">
-     <header class="shadow-sm">
-       <nav class="navbar navbar-expand-lg navbar-light">
-        <div class="container">
-          <a class="navbar-brand p-3" href="/">NaganoCake</a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
-                        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav ml-auto">
-              
-             <% if customer_signed_in? %>
-                <li class="nav-item">
-                  <%= link_to "ホーム", root_path %>
-                </li>
-                <li class="nav-item">
-                  <%= link_to "マイページ", customers_mypage_path %>
-                </li>
-                <li class="nav-item">
-                  <%= link_to "カート", cart_items_path %>
-                </li>
-                <li class="nav-item">
-                  <%= link_to "注文商品", orders_path %>
-                </li>
-                <li class="nav-item">
-                  <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
-                </li>
-              <% else %>
-                <li class="nav-item">
-                  <%= link_to "アバウト", about_path %>
-                </li>
-                <li class="nav-item">
-                  <%= link_to "カート", cart_items_path %>
-                </li>
-                <li class="nav-item">
-                  <%= link_to "新規登録", new_customer_registration_path %>
-                </li>
-                <li class="nav-item">
-                  <%= link_to "ログイン", new_customer_session_path %>
-                </li>
-              <% end %>
-            </ul>
-          </div>
+    <% if customer_signed_in? %>
+    
+      <body id="wrapper" style="background-color: white;">
+        <div id="header">
+          <%= render "layouts/header" %>
         </div>
-      </nav>
-    </header>
-  
-    <main>
-      <%= yield %>
-    </main>
-    <footer>
-      <%= link_to "管理者ログイン", new_admin_session_path %>
-      <%= link_to "管理者トップ", admin_admin_path %>
-      <%= link_to "商品一覧", admin_items_path %>
-      <%= link_to "顧客一覧", admin_customers_path %>
-      <%= link_to "商品新規登録", new_admin_item_path %>
-      <%= link_to "管理者ログアウト", destroy_admin_session_path, method: :delete %>
-    </footer>
-  </body>
+        
+        <div class="container" style="margin-top: 20px;">
+          <%= yield %>
+        </div>
+        
+        <%= render "layouts/footer" %>
+      </body>
+      
+    <% elsif admin_signed_in? %>
+    
+      <body id="wrapper" style="background-color: #EEEEEE;">
+        <div id="header">
+          <%= render "layouts/header" %>
+        </div>
+          
+        <div class="container" style="margin-top: 20;">
+          <%= yield %>
+        </div>
+        
+        <%= render "layouts/footer" %>
+      </body>
+      
+    <% else %>
+    
+      <body id="wrapper" style="background=color: white;">
+        <div id="header">
+          <%= render "layouts/header" %>
+        </div>
+        
+        <div class="container" style="margin-top: 20px;">
+          <%= yield %>
+        </div>
+        
+        <%= render "layouts/footer" %>
+      </body>
+      
+    <% end %>
+
 </html>
