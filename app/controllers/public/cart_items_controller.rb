@@ -15,13 +15,13 @@ class Public::CartItemsController < ApplicationController
   
   def create
     @cart_item = CartItem.new(cart_item_params)
-    @cart_item.customer_id = current_customer_id
+    @cart_item.customer_id = current_customer.id
     @cart_item.item_id = params[:item_id]
     if @cart_item.save
        redirect_to cart_items_path
     else
       flash[:alert] = "個数を選択してください"
-       render item_path(@item.id)
+       redirect_to items_path
     end
   end
   

@@ -13,8 +13,8 @@
             
             <%= link_to item_path(item.id), style:"color: black;" %>
             
-            <%= image_tag @item.image, size: "200x200" %>
-            
+            <%= image_tag item.image, size: "200x200" %>
+          
             <%= item.name %>
             
             ¥ <%= item.price_without_tax.to_s(:delimited, delimiter: ',') %>
