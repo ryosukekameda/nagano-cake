@@ -300,6 +300,7 @@ DEPENDENCIES
   devise
   enum_help
   font-awesome-rails
+  image_processing (>= 1.2)
   jbuilder (~> 2.7)
   jquery-rails
   kaminari (~> 1.2.1)

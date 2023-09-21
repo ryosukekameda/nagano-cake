@@ -10,12 +10,12 @@ class Admin::ItemsController < ApplicationController
   end
   
   def create
-    @item = Item.new(item_params)
-   if @item.save
-      redirect_to admin_item_path(@item)
-   else
-      redirect_to new_admin_item_path
-   end
+     @item = Item.new(item_params)
+    if @item.save
+       redirect_to admin_item_path(@item)
+    else
+       redirect_to new_admin_item_path
+    end
   end
   
   def show

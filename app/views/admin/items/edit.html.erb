@@ -11,7 +11,12 @@
               <%= f.file_field :image %>
             </div>
             <div class="product-img" style="margin-top: 20px;">
-              <%= image_tag @item.image, size: "300x300" %>
+              
+              <% if @item.image.attached? %>
+                <%= image_tag @item.image, size: "300x300" %>
+              <% else %>
+                 <%= image_tag 'no_image.jpg' %>
+              <% end %>
             </div>
           </div>
 
