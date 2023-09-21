@@ -8,8 +8,10 @@
     </div>
     
     <div class="col-xs-5">
-      <%= form_for(@cart_item, url: cart_items_path(@item.id), method: :post) do |form| %>
+      <%= form_with model: @cart_item, url: cart_items_path(@item.id), method: :post do |form| %>
+      
       <h4><%= @item.name %></h4>
+      
       <p><%= @item.introduction %></p>
     </div>
   </div>
