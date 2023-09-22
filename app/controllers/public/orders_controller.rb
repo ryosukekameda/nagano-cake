@@ -20,20 +20,24 @@ class Public::OrdersController < ApplicationController
   end
   
   def complete
-  　order = Order.new(session[:order])
+    order = Order.new(session[:order])
   　order.save
   　cart_items = current_customer.cart_items
   　cart_items.each do |cart_item|
-  　   order_detail = OrderDetail.new
-  　   order_detail.order_id = order.id
-  　   order_detai.amount = cart_item.amount
-  　   order_detail.making_status = 0
-  　   order_detail.price = (cart_item.item.price_without_tax * 1.1).floor
-  　   order_detail.save
+     order_detail = OrderDetail.new
+     order_detail.order_id = order.id
+     order_detail.amount = cart_item.amount
+     order_detail.making_status = 0
+     order_detail.price = (cart_item.item.price_without_tax * 1.1).floor
+     order_detail.save
+    end
   end
+
+  
+  
   
   def create
-    customer = current_customer
+    @customer = current_customer
     session[:order] = Order.new
     cart_items = current_customer.cart_items
     sum = 0
@@ -44,10 +48,9 @@ class Public::OrdersController < ApplicationController
     session[:order][:billing_amount] = sum + session[:order][:postage]
     session[:order][:order_status] = 0
     session[:order][:customer_id] = current_customer.id
-    session[:order][:billing_amount] = params[:method].to_i
-    session[:order][:postal_cade] = customer.postal_code
-    session[:order][:address] = customer.address
-    session[:order][:name] = customer.name
+    session[:order][:postal_code] = @customer.postal_code
+    session[:order][:address] = @customer.address
+    session[:order][:name] = @customer.full_name
     if session[:order][:postal_code].presence && session[:order][:address].presence && session[:order][:name].presence
        redirect_to confirm_path
     else
@@ -55,5 +58,4 @@ class Public::OrdersController < ApplicationController
     end
   end
   
-  end
 end
