@@ -11,9 +11,15 @@ class Public::OrdersController < ApplicationController
   end
   
   def show
-    @order = Order.find(params[:id])
-    @order_details = @order.order_details
+    if params[:id] == "confirm"
+      @order = Order.new(session[:order])
+      @order.created_at = Time.now
+    else
+      @order = Order.find(params[:id])
+    end
+      @order_details = @order.order_details
   end
+
   
   def confirm
     @cart_items = current_customer.cart_items
@@ -32,9 +38,6 @@ class Public::OrdersController < ApplicationController
      order_detail.save
     end
   end
-
-  
-  
   
   def create
     @customer = current_customer
@@ -52,7 +55,7 @@ class Public::OrdersController < ApplicationController
     session[:order][:address] = @customer.address
     session[:order][:name] = @customer.full_name
     if session[:order][:postal_code].presence && session[:order][:address].presence && session[:order][:name].presence
-       redirect_to confirm_path
+       redirect_to confirm_path(id: "confirm")
     else
        redirect_to new_order_path
     end

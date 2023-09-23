@@ -8,7 +8,7 @@
   
   <div class="col-xs-5">
     
-    <%= form_with model: @cart_item, url: cart_items_path, method: :post do |f| %>
+    <%= form_with model: @cart_item, url: cart_items_path(item_id: @item), method: :post do |f| %>
     <%= f.hidden_field :item_id, value: @item.id %>
   
       <h4><%= @item.name %></h4>
