@@ -37,6 +37,7 @@ class Public::OrdersController < ApplicationController
      order_detail.price = (cart_item.item.price_without_tax * 1.1).floor
      order_detail.save
     end
+    cart_item.destroy_all
   end
   
   def create
@@ -62,4 +63,10 @@ class Public::OrdersController < ApplicationController
     end
   end
   
+private
+
+  def order_params
+	  params.require(:order).permit(:customer_id, :postage, :billing_amount, :payment_method, :ordr_status, :post_code, :address, :name)
+	end
+	
 end
