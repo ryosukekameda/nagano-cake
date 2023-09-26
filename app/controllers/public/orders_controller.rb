@@ -14,10 +14,11 @@ class Public::OrdersController < ApplicationController
     if params[:id] == "confirm"
       @order = Order.new(session[:order])
       @order.created_at = Time.now
+      @order_details = @order.order_details
     else
       @order = Order.find(params[:id])
-    end
       @order_details = @order.order_details
+    end
   end
 
   
@@ -39,18 +40,20 @@ class Public::OrdersController < ApplicationController
   end
   
   def complete
-    order = Order.new(session[:order])
-  　order.save
-  　cart_items = current_customer.cart_items
-  　cart_items.each do |cart_item|
-     order_detail = OrderDetail.new
-     order_detail.order_id = order.id
-     order_detail.amount = cart_item.amount
-     order_detail.making_status = 0
-     order_detail.price = (cart_item.item.price_without_tax * 1.1).floor
-     order_detail.save
-    end
-    cart_item.destroy_all
+    @order = Order.new(session[:order])
+    @order.customer_id = current_customer.id
+     order.save
+  　  cart_items = current_customer.cart_items
+  　  cart_items.each do |cart_item|
+       order_detail = OrderDetail.new
+       order_detail.order_id = order.id
+       order_detail.amount = cart_item.amount
+       order_detail.making_status = 0
+       order_detail.price = (cart_item.item.price_without_tax * 1.1).floor
+       order_detail.save
+     end
+      cart_items.destroy_all
+      redirect_to order_path(@order)
   end
   
   def create
