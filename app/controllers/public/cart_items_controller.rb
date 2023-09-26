@@ -4,8 +4,13 @@ class Public::CartItemsController < ApplicationController
   
   def index
     @cart_items = current_customer.cart_items
-    @billing_amount = @cart_items.sum{|cart_item|cart_item.item.price_without_tax * cart_item.amount * 1.1}
+    @billing_amount = @cart_items.sum do |cart_item|
+      item_price = cart_item.item.price_without_tax || 0
+      item_amount = cart_item.amount || 0
+      (item_price * item_amount * 1.1).floor
+    end
   end
+
   
   def update
     @cart_item = CartItem.find(params[:id])

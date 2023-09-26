@@ -42,20 +42,21 @@ class Public::OrdersController < ApplicationController
   
   def create
     customer = current_customer
-    session[:order] = Order.new
+    session[:order] = {}
     cart_items = current_customer.cart_items
     sum = 0
     cart_items.each do |cart_item|
       sum += (cart_item.item.price_without_tax * 1.1).floor * cart_item.amount
     end
+    puts "params[:method]: #{params[:method]}"
       session[:order][:postage] = 800
       session[:order][:billing_amount] = sum + session[:order][:postage]
       session[:order][:order_status] = 0
       session[:order][:customer_id] = current_customer.id
       session[:order][:payment_method] = params[:method].to_i
-      session[:order][:postal_code] = @customer.postal_code
-      session[:order][:address] = @customer.address
-      session[:order][:name] = @customer.full_name
+      session[:order][:postal_code] = customer.postal_code
+      session[:order][:address] = customer.address
+      session[:order][:name] = customer.full_name
     if session[:order][:postal_code].presence && session[:order][:address].presence && session[:order][:name].presence
        redirect_to confirm_path(id: "confirm")
     else
