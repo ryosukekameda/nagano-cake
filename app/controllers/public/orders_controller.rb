@@ -18,7 +18,7 @@ class Public::OrdersController < ApplicationController
     else
       @order = Order.find(params[:id])
       @order_details = @order.order_details
-    end
+  　 end
   end
 
   
@@ -42,18 +42,18 @@ class Public::OrdersController < ApplicationController
   def complete
     @order = Order.new(session[:order])
     @order.customer_id = current_customer.id
-     order.save
+    @order.save
   　  cart_items = current_customer.cart_items
   　  cart_items.each do |cart_item|
        order_detail = OrderDetail.new
-       order_detail.order_id = order.id
+       order_detail.order_id = @order.id
        order_detail.amount = cart_item.amount
        order_detail.making_status = 0
        order_detail.price = (cart_item.item.price_without_tax * 1.1).floor
        order_detail.save
      end
       cart_items.destroy_all
-      redirect_to order_path(@order)
+      redirect_to complete_order_path(@order)
   end
   
   def create
