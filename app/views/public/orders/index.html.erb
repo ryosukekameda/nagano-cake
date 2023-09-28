@@ -19,7 +19,9 @@
       <% @orders.each do |order| %>
       
       <tr>
-        <td class="col-xs-3"><%= order.created_at.strftime('%Y/%m/%d') %></td>
+        <td class="col-xs-3">
+          <%= order.created_at.strftime('%Y/%m/%d') %>
+        </td>
         <td class="col-xs-2">
           <%= order.postal_code %>
           <%= order.address %>

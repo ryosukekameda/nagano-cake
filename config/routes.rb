@@ -33,7 +33,7 @@ Rails.application.routes.draw do
     
     resources :orders, only: [:new, :index, :show, :create]
     post 'orders/confirm' => 'orders#confirm', as: 'confirm'
-    get 'orders/complete' => 'orders#complete', as: 'complete_order'
+    get 'orders/complete' => 'orders#complete', as: 'complete'
   
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
