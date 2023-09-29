@@ -16,9 +16,9 @@ class Public::OrdersController < ApplicationController
       @order.created_at = Time.now
       @order_details = @order.order_details
     else
-      @order = Order.find(params[:id])
+      @order = Order.new(session[:order])
       @order_details = @order.order_details
-  　 end
+  　end
   end
 
   
@@ -40,11 +40,11 @@ class Public::OrdersController < ApplicationController
   end
   
   def complete
-    @order = Order.new(session[:order])
+    @order = Order.new(order_params)
     @order.customer_id = current_customer.id
     @order.save
-  　  cart_items = current_customer.cart_items
-  　  cart_items.each do |cart_item|
+     cart_items = current_customer.cart_items
+     cart_items.each do |cart_item|
        order_detail = OrderDetail.new
        order_detail.order_id = @order.id
        order_detail.amount = cart_item.amount
@@ -83,7 +83,6 @@ class Public::OrdersController < ApplicationController
 private
 
   def order_params
-	  params.require(:order).permit(:customer_id, :postage, :billing_amount, :payment_method, :ordr_status, :post_code, :address, :name)
-	end
-	
+    params.require(:order).permit(:customer_id, :postage, :billing_amount, :payment_method, :ordr_status, :post_code, :address, :name)
+  end
 end
