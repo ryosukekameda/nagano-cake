@@ -6,7 +6,7 @@
   
   <div class="panel-body">
     
-    <%= form_with model: @order, url: confirm_path, method: :post do |f| %>
+    <%= form_with model: @order, url: orders_confirm_path, method: :post, local: true do |f| %>
     
       <h5>支払方法</h5>
       

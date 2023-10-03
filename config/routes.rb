@@ -22,19 +22,26 @@ Rails.application.routes.draw do
     
     resources :items, only: [:index, :show]
     
-    get 'customers/mypage' => 'customers#show'
-    get 'customers/information/edit' => 'customers#edit'
-    patch 'customers/information' => 'customers#update'
-    get 'customers/unsubscribe' => 'customers#unsubscribe'
-    patch 'customers/withdraw' => 'customers#withdraw'
+  resource :customer, only: [] do
+    member do
+      get 'mypage', action: :show
+      get 'information/edit', action: :edit
+      patch 'information', action: :update
+      get 'unsubscribe'
+      patch 'withdraw'
+    end
+  end
+
     
-    resources :cart_items, only: [:index, :update, :create, :destroy]
-    delete 'cart_items/destroy_all' => 'cart_items#destroy_all', as: 'destroy_all'
+    resources :cart_items, only: [:index, :update, :create, :destroy] do
+      collection do
+        delete 'destroy_all'
+      end
+    end
     
     resources :orders, only: [:new, :index, :show, :create]
-    post 'orders/confirm' => 'orders#confirm', as: 'confirm'
-    get 'orders/complete' => 'orders#complete', as: 'complete'
-  
+    post 'orders/confirm' => 'orders#confirm', as: 'orders_confirm'
+    post 'complete' => 'orders#complete'
+    end
   end
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-end
+
