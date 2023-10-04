@@ -59,8 +59,6 @@ gem 'devise'
 
 gem 'font-awesome-rails'
 
-gem 'enum_help'
-
 gem 'leifcr-refile-mini_magick', '~> 0.2.3'
 
 gem 'bootstrap', '~> 4.1.1'
@@ -70,3 +68,5 @@ gem 'jquery-rails'
 gem 'kaminari','~> 1.2.1'
 
 gem "image_processing", ">= 1.2"
+
+gem 'enum_help'

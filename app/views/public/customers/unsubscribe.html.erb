@@ -1,6 +1,7 @@
+<br><br><br>
 
-  <div class="row">
-    <div class="col">
+  <div class="row justify-content-center">
+    <div class="col text-center">
       
       <h1 class="my-5"><strong>本当に退会しますか？</strong></h1>
       
@@ -14,8 +15,9 @@
          
         </div>
         
-        <%= link_to "退会しない", mypage_customer_path, class:"glyphicon glyphicon-home btn btn-primary" %>
-        <%= link_to "退会する", withdraw_customer_path, method: :patch, data: {confirm: "本当に退会しますか？"}, class:"glyphicon glyphicon-tint btn btn-danger" %>
+        <br><br>
+        <%= link_to "退会しない", mypage_customer_path, class:"glyphicon glyphicon-home btn btn-primary", style: "width: 150px; margin: 10px;" %>
+        <%= link_to "退会する", withdraw_customer_path, method: :patch, data: {confirm: "本当に退会しますか？"}, class:"glyphicon glyphicon-tint btn btn-danger", style: "width: 150px; margin: 10px;" %>
       
     </div>
   </div>

@@ -6,45 +6,47 @@
         <table class="table table-bordered">
           
         <p>
-          <strong class="information-link">登録情報</strong>
-          <%= link_to "編集する", information_edit_customer_path, class:"glyphicon glyphicon-pencil btn btn-success" %>
+          <strong class="information-link" style="margin: 10px;">登録情報</strong>
+          <%= link_to "編集する", information_edit_customer_path, class:"glyphicon glyphicon-pencil btn btn-success", style: "width: 150px; margin: 10px;" %>
         </P>
+        <br>
             
             <tr>
-                <td class="col-xs-2">氏名</td>
-                <td><%= current_customer.full_name %></td>
+                <td class="col-xs-2" style="width: 200px;">氏名</td>
+                <td style="width: 500px;"><%= current_customer.full_name %></td>
             </tr>  
             
             <tr>
-                <td class="col-xs-2">カナ</td>
-                <td><%= current_customer.full_name_kana %></td>
+                <td class="col-xs-2" style="width: 200px;">カナ</td>
+                <td style="width: 500px;"><%= current_customer.full_name_kana %></td>
             </tr>
             
             <tr>
-                <td class="col-xs-2">郵便番号</td>
-                <td><%= current_customer.postal_code %></td>
+                <td class="col-xs-2" style="width: 200px;">郵便番号</td>
+                <td style="width: 500px;"><%= current_customer.postal_code %></td>
             </tr>
             
             <tr>
-                <td class="col-xs-2">住所</td>
-                <td><%= current_customer.address %></td>
+                <td class="col-xs-2" style="width: 200px;">住所</td>
+                <td style="width: 500px;"><%= current_customer.address %></td>
             </tr>
             
             <tr>
-                <td class="col-xs-2">電話番号</td>
-                <td><%= current_customer.telephone_number %></td>
+                <td class="col-xs-2" style="width: 200px;">電話番号</td>
+                <td style="width: 500px;"><%= current_customer.telephone_number %></td>
             </tr>
             
             <tr>
-                <td class="col-xs-2">メールアドレス</td>
-                <td><%= current_customer.email %></td>
+                <td class="col-xs-2" style="width: 200px;">メールアドレス</td>
+                <td style="width: 500px;"><%= current_customer.email %></td>
             </tr>
             
           </table>
           
+          <br>
             <p>
-              <strong class="shipping-link">注文履歴一覧</strong>
-              <%= link_to "一覧を見る", orders_path, class:"glyphicon glyphicon-folder-open btn btn-info" %>
+              <strong class="shipping-link" style="margin: 10px;">注文履歴一覧</strong>
+              <%= link_to "一覧を見る", orders_path, class:"glyphicon glyphicon-folder-open btn btn-info", style: "width: 150px; margin: 10px;" %>
             </p>
     </div>
   </div>

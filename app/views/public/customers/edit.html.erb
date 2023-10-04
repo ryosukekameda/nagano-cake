@@ -7,42 +7,42 @@
         
         <div>
           <div class="col-xs-12">
-             <%= f.label :"氏名", class: "col-sm-3 control-label" %>
-             <%= f.text_field :last_name, class:"last_name col-sm-3 form-control-static name" %>
-             <%= f.text_field :first_name, class:"first_name col-sm-3 form-control-static name" %>
-          </div>
+              <%= f.label :"氏名", class: "col-sm-3 control-label", style: "margin: 10px;" %>
+              <%= f.text_field :last_name, class: "last_name col-sm-3 form-control-static name", style: "margin: 10px;" %>
+              <%= f.text_field :first_name, class: "first_name col-sm-3 form-control-static name", style: "margin: 10px;" %>
+            </div>
         
           <div class="col-xs-12">
-             <%= f.label :"フリガナ", class: "col-sm-3 control-label" %>
-             <%= f.text_field :last_name_kana, class:"last_name_kana col-sm-3 form-control-static name" %>
-             <%= f.text_field :first_name_kana, class:"first_name_kana col-sm-3 form-control-static name" %>
-           </div>
+              <%= f.label :"フリガナ", class: "col-sm-3 control-label", style: "margin: 10px;" %>
+              <%= f.text_field :last_name_kana, class: "last_name_kana col-sm-3 form-control-static name", style: "margin: 10px;" %>
+              <%= f.text_field :first_name_kana, class: "first_name_kana col-sm-3 form-control-static name", style: "margin: 10px;" %>
+            </div>
         
            <div class="col-xs-12">
-             <%= f.label :"郵便番号", class: "col-sm-3 control-label" %>
-             <%= f.text_field :postal_code, class:"col-sm-2 form-control-static" %>
+              <%= f.label :"郵便番号", class: "col-sm-3 control-label", style: "margin: 10px;" %>
+              <%= f.text_field :postal_code, class: "col-sm-2 form-control-static", style: "margin: 10px;" %>
             </div>
         
             <div class="col-xs-12">
-              <%= f.label :"住所", class: "col-sm-3 control-label" %>
-              <%= f.text_field :address, class:"col-sm-8 form-control-static" %>
+              <%= f.label :"住所", class: "col-sm-3 control-label", style: "margin: 10px;" %>
+              <%= f.text_field :address, class: "col-sm-8 form-control-static", style: "margin: 10px;" %>
             </div>
         
             <div class="col-xs-12">
-              <%= f.label :"電話番号", class: "col-sm-3 control-label" %>
-              <%= f.text_field :telephone_number, class:"col-sm-2 form-control-static" %>
+              <%= f.label :"電話番号", class: "col-sm-3 control-label", style: "margin: 10px;" %>
+              <%= f.text_field :telephone_number, class: "col-sm-2 form-control-static", style: "margin: 10px;" %>
             </div>
         
             <div class="col-xs-12">
-              <%= f.label :"メールアドレス", class: "col-sm-3 control-label" %>
-              <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"col-sm-6 form-control-static" %>
+              <%= f.label :"メールアドレス", class: "col-sm-3 control-label", style: "margin: 10px;" %>
+              <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "col-sm-6 form-control-static", style: "margin: 10px;" %>
             </div>
          </div>
         
-        <div class="actions col-xs-10 col-xs-offset-2">
+        <div class="actions col-xs-10 col-xs-offset-2 text-center">
           <p>
-            <%= f.submit "編集内容を保存", class:"btn btn-success" %>
-            <%= link_to "退会する", unsubscribe_customer_path, class:"btn btn-danger" %>
+            <%= f.submit "編集内容を保存", class:"btn btn-success", style: "margin: 10px;" %>
+            <%= link_to "退会する", unsubscribe_customer_path, class:"glyphicon glyphicon-tint btn btn-danger col-sm-3", style: "margin: 10px;" %>
           </p>
         </div>
         

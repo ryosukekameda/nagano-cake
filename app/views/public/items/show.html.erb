@@ -1,31 +1,33 @@
-<div class="row">
-  
-  <div class="col-xs-5">
-    <div class="item-content1">
-      <%= image_tag @item.image, size: "200x200" %>
+<div class="d-flex justify-content-center">
+  <div class="row">
+    
+    <div class="col-xs-5">
+      <div class="item-content1" style="margin: 40px;">
+        <%= image_tag @item.image, size: "280x225" %>
+      </div>
     </div>
-  </div>
   
   <div class="col-xs-5">
     
     <%= form_with model: @cart_item, url: cart_items_path(item_id: @item), method: :post do |f| %>
     <%= f.hidden_field :item_id, value: @item.id %>
   
-      <h4><%= @item.name %></h4>
-      <p><%= @item.introduction %></p>
+      <h4 style="margin: 30px;"><%= @item.name %></h4>
+      <p style="margin: 30px;"><%= @item.introduction %></p>
 
-      <div class="item-content2" style="font-family: arial black">
-        ¥ <%= ((@item.price_without_tax * 1.1).floor).to_s(:delimited, delimiter: ',') %> (税込)
-        <span><%= f.select :amount, [['1個', 1], ['2個', 2], ['3個', 3], ['4個', 4], ['5個', 5], ['6個', 6], ['7個', 7], ['8個', 8], ['9個', 9]], {:prompt => "個数選択"} %></span>
+      <div class="item-content2" style="font-family: arial black; margin-bottom: 20px;">
+        ¥ <%= ((@item.price_without_tax * 1.1).floor).to_s(:delimited, delimiter: ',') %> (税込)<br>
       </div>
-
-      <p>
-        <%= f.submit "カートに入れる", class:"btn btn-primary" %>
-      </p>
+      
+      <div class="d-flex align-items-center">
+        <span style="margin-right: 20px;"><%= f.select :amount, [['1個', 1], ['2個', 2], ['3個', 3], ['4個', 4], ['5個', 5], ['6個', 6], ['7個', 7], ['8個', 8], ['9個', 9]], {:prompt => "個数選択"} %></span>
+        <%= f.submit "カートに入れる", class:"btn btn-success" %>
+      </div>
+      
     <% end %>
+      
 
+    </div>
   </div>
-  
 </div>
-
   

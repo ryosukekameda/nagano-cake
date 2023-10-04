@@ -1,8 +1,9 @@
 <div class="row">
-  <div class="col">
+  <div class="col text-center">
     
       <h4 style="font-family: HiraMinPro-W6; color: #000000; margin: 20px 0;">
         <strong>ようこそ、NaganoCakeへ！</strong><br>
+        <br>
         このサイトは、ケーキ販売のECサイトになります。<br>
         会員でない方も商品の閲覧はできますが、<br>
         購入には会員登録が必要になります。<br>
@@ -12,30 +13,33 @@
 
 <div class="row">
     <div class="col">
-      <h3 class="recommended-items" style="font-family: HiraMinPro-W6; color: #000000;">新着商品</h3>
+      <h3 class="recommended-items" style="font-family: HiraMinPro-W6; color: #000000;">
+        新着商品
+      </h3>
   
+     <br>
       
       <div class="row">
-        <div class="item-card-content">
-          
+        
           <% @items.last(4).each do |item| %>
-            <div class="col-md-6">
+            <div class="col-3" style="padding-right: 0px; padding-left: 0px;">
               <%= link_to item_path(item.id), style:"color: black;" do %>
-              <%= image_tag item.image, size: "180x125", accept:"image/*" %><br>
-              <%= item.name %><br>
-              ¥<%= item.price_without_tax.to_s(:delimited, delimiter: ',') %>
+              <%= image_tag item.image, size: "280x225", accept:"image/*" %><br>
+                <%= item.name %><br>
+                ¥<%= item.price_without_tax.to_s(:delimited, delimiter: ',') %>
               <% end %>
             </div>
           <% end %>
           
-        </div>
       </div>
       
     </div>
   </div>
     
+    <br><br>
+    
     <div class="col">
       <h5>
-        <%= link_to "すべての商品を見る>", items_path, class:"pull-right", style:"font-family: HiraMinPro-W6; color: #000000; margin: 30px 0;" %>
+        <%= link_to "すべての商品を見る>", items_path, class: "float-right", style: "font-family: HiraMinPro-W6; color: #000000; margin: 30px 0;" %>
       </h5>
     </div>

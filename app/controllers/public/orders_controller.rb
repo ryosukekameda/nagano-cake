@@ -59,26 +59,20 @@ class Public::OrdersController < ApplicationController
   def complete
     order = Order.new(session[:order])
     order.customer = current_customer
-    if order.save
+    order.save
     session[:order_id] = order.id
       cart_items = current_customer.cart_items
       cart_items.each do |cart_item|
       order_detail = OrderDetail.new
       order_detail.order_id = order.id
+      order_detail.item_id = cart_item.item_id
       order_detail.amount = cart_item.amount
       order_detail.making_status = 0
       order_detail.price = (cart_item.item.price_without_tax * 1.1).floor
-      if order_detail.save
-        redirect_to orders_path
-      else
-        Rails.logger.debug("OrderDetail Save Failed: #{order_detail.errors.full_messages.join(", ")}")
+      order_detail.save
       end
-    end
       cart_items.destroy_all
       render :complete
-    else
-      Rails.logger.debug(order.errors.full_messages.join(", "))
-    end   
   end
   
   def index

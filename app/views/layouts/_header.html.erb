@@ -1,8 +1,12 @@
 <header class="sticky-top">
 
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark text-white">
+    <nav class="navbar navbar-expand-md navbar-light bg-light">
       <div class="container">
-        <a href="https://dd395bbb0a2244cf9630f0e758761021.vfs.cloud9.ap-southeast-2.amazonaws.com/" class="navbar-brand">Nagano_Cake</a>
+        <a href="https://dd395bbb0a2244cf9630f0e758761021.vfs.cloud9.ap-southeast-2.amazonaws.com/" class="navbar-brand">
+          <div="border p-2">
+            Nagano_Cake
+          </div>
+        </a>
     
     
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" 
@@ -16,72 +20,72 @@
         
         <% if customer_signed_in? %>
         
-          <li class="nav-item">
+          <li class="nav-item" style="margin-right:15px;">
             ようこそ、<%= current_customer.full_name %>さん!
           </li>
           
-          <li class="nav-item">
-            <%= link_to "マイページ", mypage_customer_path %>
+          <li class="nav-item" style="margin-right:15px;">
+            <%= link_to "マイページ", mypage_customer_path, style: "color:black;" %>
           </li>
           
-          <li class="nav-item">
-            <%= link_to "商品一覧", items_path %>
+          <li class="nav-item" style="margin-right:15px;">
+            <%= link_to "商品一覧", items_path, style: "color:black;" %>
           </li>
          
-          <li class="nav-item">
-            <%= link_to "カート", cart_items_path %>
+          <li class="nav-item" style="margin-right:15px;">
+            <%= link_to "カート", cart_items_path, style: "color:black;" %>
           </li>
           
-          <li class="nav-item">
-            <%= link_to "About", about_path %>
+          <li class="nav-item" style="margin-right:15px;">
+            <%= link_to "About", about_path, style: "color:black;" %>
           </li>
          
-          <li class="nav-item">
-            <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
+          <li class="nav-item" style="margin-right:15px;">
+            <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, style: "color:black;" %>
           </li>
         
         <% elsif admin_signed_in? %>
         
-          <li class="nav-item">
-            <%= link_to "商品一覧", admin_items_path %>
+          <li class="nav-item" style="margin-right:15px;">
+            <%= link_to "商品一覧", admin_items_path, style: "color:black;" %>
           </li>
          
-          <li class="nav-item">
-            <%= link_to "会員一覧", admin_customers_path %>
+          <li class="nav-item" style="margin-right:15px;">
+            <%= link_to "会員一覧", admin_customers_path, style: "color:black;" %>
           </li>
          
-          <li class="nav-item">
-            <%= link_to "注文履歴一覧", admin_orders_path %>
+          <li class="nav-item" style="margin-right:15px;">
+            <%= link_to "注文履歴一覧", admin_orders_path, style: "color:black;" %>
           </li>
        
-          <li class="nav-item">
-            <%= link_to "About", about_path %>
+          <li class="nav-item" style="margin-right:15px;">
+            <%= link_to "About", about_path, style: "color:black;" %>
           </li>
          
-          <li class="nav-item">
-            <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
+          <li class="nav-item" style="margin-right:15px;">
+            <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, style: "color:black;" %>
           </li>
           
         <% else %>
         
-          <li class="nav-item">
-            <%= link_to "商品一覧", items_path %>
+          <li class="nav-item" style="margin-right:15px;">
+            <%= link_to "商品一覧", items_path, style: "color:black;" %>
           </li>
          
-          <li class="nav-item">
-            <%= link_to "新規登録", new_customer_registration_path %>
+          <li class="nav-item" style="margin-right:15px;">
+            <%= link_to "新規登録", new_customer_registration_path, style: "color:black;" %>
           </li>
          
-          <li class="nav-item">
-            <%= link_to "About", about_path %>
+          <li class="nav-item" style="margin-right:15px;">
+            <%= link_to "About", about_path, style: "color:black;" %>
             </li>
         
-          <li class="nav-item">
-            <%= link_to "ログイン", new_customer_session_path %>
+          <li class="nav-item" style="margin-right:15px;">
+            <%= link_to "ログイン", new_customer_session_path, style: "color:black;" %>
           </li>
       
-          <li class="nav-item"> 
-            <%= link_to "管理者ログイン", new_admin_session_path %>
+          <li class="nav-item" style="margin-right:15px;"> 
+            <%= link_to "管理者ログイン", new_admin_session_path, style: "color:black;" %>
           </li>
           
         <% end %>
