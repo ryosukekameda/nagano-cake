@@ -19,13 +19,13 @@
           <% @items.each do |item| %>
             <tr>
               <td><%= item.id %></td>
-              <td><%= link_to item.name, admin_item_path(item.id) %></td>
+              <td style="color: black;"><%= link_to item.name, admin_item_path(item.id), style: "color: black;" %></td>
               <td><%= item.price_without_tax.to_s(:delimited, delimiter: ',') %> 円</td>
               <td>
                 <% if item.is_sales_status == false %>
-                  販売中
+                  <span style="color: green;">販売中</span>
                 <% else %>
-                  販売停止中
+                  <span style="color: red;">販売停止中</span>
                 <% end %>
               </td>
             </tr>
