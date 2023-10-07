@@ -1,65 +1,69 @@
 
   <div class="row">
-    <div class="col-xs-12">
-      <h4><strong><%= @customer.full_name %>さんの会員情報編集</strong></h4>
-        
-          <%= form_for(@customer, url: admin_customer_path) do |f| %>
-          
-          <table class="row table">
-          
+        <div class="col-xs-12">
+      <h4 class="text-left mb-5" style="margin-top: 50px;"><%= @customer.full_name %>さんの会員情報編集</h4>
+
+      <%= form_with model: @customer, url: admin_customer_path do |f| %>
+        <table class="table table-borderless">
           <tr>
-            <th class="col-xs-2"><%= f.label :会員ID %></td>
-            <td class="col-xs-10"><%= f.text_field :id, class:"form-control" %></td>
+            <th class="col-xs-2 text-left"><%= f.label :会員ID %></th>
+            <td class="col-xs-10"><%= @customer.id %></td>
           </tr>
-          
+          <tr>
           <tr>
             <th><%= f.label :氏名 %></th>
-            <td>
-              <%= f.text_field :last_name, class:"form-control" %><br>
-              <%= f.text_field :first_name, class:"form-control" %>
-             </td>
-          </tr>
-          
-           <tr>
-             <th><%= f.label :フリガナ %></th>
-             <td>
-               <%= f.text_field :last_name_kana, class:"form-control" %><br>
-               <%= f.text_field :first_name_kana, class:"form-control" %>
-             </td>
-          </tr>
-          
+              <td>
+                <div class="row">
+                  <div class="col-6">
+                    <%= f.text_field :last_name, class:"form-control", placeholder: "姓" %>
+                  </div>
+                  <div class="col-6">
+                    <%= f.text_field :first_name, class:"form-control", placeholder: "名" %>
+                  </div>
+                </div>
+              </td>
+            </tr>
+
           <tr>
-            <th><%= f.label :郵便番号 %></th>
+            <th><%= f.label :フリガナ %></th>
+              <td>
+                <div class="row">
+                  <div class="col-6">
+                    <%= f.text_field :last_name_kana, class:"form-control", placeholder: "セイ" %>
+                  </div>
+                  <div class="col-6">
+                    <%= f.text_field :first_name_kana, class:"form-control", placeholder: "メイ" %>
+                  </div>
+                </div>
+              </td>
+            </tr>
+
+
+          <tr>
+            <th class="text-left"><%= f.label :郵便番号 %></th>
             <td><%= f.text_field :postal_code, class:"form-control" %></td>
           </tr>
-          
           <tr>
-            <th><%= f.label :住所 %></th>
+            <th class="text-left"><%= f.label :住所 %></th>
             <td><%= f.text_field :address, class:"form-control" %></td>
           </tr>
-          
           <tr>
-            <th><%= f.label :電話番号 %></th>
+            <th class="text-left"><%= f.label :電話番号 %></th>
             <td><%= f.text_field :telephone_number, class:"form-control" %></td>
           </tr>
-          
           <tr>
-             <th><%= f.label :メールアドレス %></th>
-             <td><%= f.text_field :email , class:"form-control"%></td>
+            <th class="text-left"><%= f.label :メールアドレス %></th>
+            <td><%= f.text_field :email, class:"form-control" %></td>
           </tr>
-          
           <tr>
-             <th><%= f.label :会員ステータス %></th>
-             <td><%= f.select :is_customer_status, [["有効会員","false"], ["退会済み","true"]], class:"form-control" %></td>
+            <th class="text-left"><%= f.label :会員ステータス %></th>
+            <td><%= f.select :is_customer_status, [["有効会員","false"], ["退会済み","true"]], class:"form-control" %></td>
           </tr>
-         </table>
-          
-          <tr>
-            <td></td>
-            <td><%= f.submit "変更を保存", class:"btn btn-success" %></td>
-          </tr>
-          
-          <% end %>
-      
+        </table>
+
+        <div class="text-center mb-3">
+          <%= f.submit "変更を保存", class:"btn btn-success" %>
+        </div>
+      <% end %>
     </div>
   </div>
